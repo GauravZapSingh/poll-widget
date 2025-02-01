@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polls</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;1,300&family=Roboto+Slab:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="section-header">
+    <h1>Static Page with Multiple Polls</h1>
+  </div>
+
+  <div class="button-container">
+    <button id="addNewPoll">Add New Poll</button>
+  </div>
+  <div id="pollContainer" class="poll-widget-container">
+    <div class="poll-row">
+      <div class="poll-widget"
+        data-poll='{"pollId": "fav-lang", "question": "What is your favorite programming language?", "options": ["JavaScript", "Python", "C++", "Rust"]}'
+        data-allow-retry></div>
+      <div class="poll-description">
+        <h2>Poll with multiple votes options</h2>
+        <p>Optional Attribute 'data-allow-retry' allows multiple votes. User may still vote after initial vote.</p>
+      </div>
+    </div>
+
+    <div class="poll-row">
+      <div class="poll-widget"
+        data-poll='{"pollId": "fav-framework", "question": "Best Frontend Framework?", "options": ["React", "Vue", "Angular", "Svelte"]}'>
+      </div>
+      <div class="poll-description">
+        <h2>Poll with Single vote</h2>
+        <p>By default attribute 'data-allow-retry' is false if not added. Allows to vote only once. Cannot be undo or
+          reset.</p>
+      </div>
+    </div>
+
+    <div class="poll-row">
+      <div class="poll-widget"
+        data-poll='{"pollId": "fav-lang", "question": "Which OS do you use?", "options": ["Windows", "macOS", "Linux", "Other"]}'>
+      </div>
+      <div class="poll-description">
+        <h2>Poll with same poll Id</h2>
+        <p>Poll with same Id will not be rendered and throw error. This is to prevent same poll being used</p>
+      </div>
+    </div>
+
+    <div class="poll-row">
+      <div class="poll-widget"
+        data-poll='{"pollId": "", "question": "Which OS do you use?", "options": ["Windows", "macOS", "Linux", "Other"]}'>
+      </div>
+      <div class="poll-description">
+        <h2>Poll without proper configuration</h2>
+        <p>Poll without proper mandatory 'data-poll' attribute will not be rendered. This also prevents new poll being added without mandatory data</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <div class="form-container" id="formContainer">
+    <button class="close-btn" id="closeForm">X</button>
+    <h3>Enter Question:</h3>
+    <input type="text" id="questionInput" placeholder="Enter your question" />
+    <h3>Enter Poll Id:</h3>
+    <input type="text" id="pollId" placeholder="Enter Poll Id" />
+
+    <h4>Options:</h4>
+    <input type="text" class="option" placeholder="Option 1" />
+    <input type="text" class="option" placeholder="Option 2" />
+    <input type="text" class="option" placeholder="Option 3" />
+    <input type="text" class="option" placeholder="Option 4" />
+
+    <button id="saveForm">Create</button>
+  </div>
+  <script defer src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script defer src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script defer src="poll-widget.js"></script>
+</body>
+
+</html>
